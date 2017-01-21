@@ -20,7 +20,7 @@ public class MoveScript : MonoBehaviour {
 		if(isCameraFollowing) {
 			Camera.main.transform.position = new Vector3(
 				transform.position.x + cameraOffset.x,
-				transform.position.y + cameraOffset.y,
+				Camera.main.transform.position.y,
 				Camera.main.transform.position.z
 			);
 		}
@@ -32,5 +32,10 @@ public class MoveScript : MonoBehaviour {
 
         // Apply movement to the rigidbody
 		rigidbodyComponent.AddForce(movement);
+        
+
+        if(rigidbodyComponent.velocity.magnitude > Model.Instance.maxSpeed) {
+            rigidbodyComponent.velocity = rigidbodyComponent.velocity.normalized * Model.Instance.maxSpeed;
+        }
     }
 }

@@ -3,19 +3,26 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class ApplyPower : MonoBehaviour {
-	public Power power;
+
+	delegate void Power(GameObject gameObject);
+	private Power power;
+
+	private bool canDoubleJump;
 
 	void Start() {
 		Debug.Log(gameObject.tag);
 		switch(gameObject.tag) {
 			case "JumpPower" : 
-				power = new JumpPower();
-				break;
+				power = go => {
+					if(Model.Instance.canJump) {
+						Model.Instance.canJump = false;
+						go.GetComponent<Rigidbody2D>().AddForce(new Vector2(0, 600));
+					}
+				};break;
 		}
 	}
 
 	void OnTriggerEnter2D(Collider2D other) {
-		Debug.Log("Trigger");
-		if(other.tag == "Player") power.applyOn(other.gameObject);
+		if(other.tag == "Player") power(other.gameObject);
 	}
 }

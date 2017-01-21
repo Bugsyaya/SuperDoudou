@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - JumpPower
+  - Floor
   layers:
   - Default
   - TransparentFX
@@ -51,9 +52,12 @@ TagManager:
   - name: Bullets
     uniqueID: 3136184535
     locked: 0
+  - name: Default
+    uniqueID: 0
+    locked: 0
   - name: Player
     uniqueID: 3750635459
     locked: 0
-  - name: Default
-    uniqueID: 0
+  - name: UI
+    uniqueID: 2558800373
     locked: 0
