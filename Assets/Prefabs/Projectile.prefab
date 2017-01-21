@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 50926076328201106}
   - component: {fileID: 61791427218689232}
   - component: {fileID: 114329448475128514}
+  - component: {fileID: 114625101744248458}
   m_Layer: 0
   m_Name: Projectile
   m_TagString: Untagged
@@ -37,7 +38,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1722979914967352}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6.912, y: -0.096295595, z: 4.4677353}
+  m_LocalPosition: {x: -1.57, y: -0.096295595, z: 4.4677353}
   m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -90,6 +91,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 1
   isEnemyShot: 0
+--- !u!114 &114625101744248458
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1722979914967352}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2a8148e54c644590b289859826c835d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: {x: 10, y: 10}
+  direction: {x: 1, y: 0}
 --- !u!212 &212038525489908786
 SpriteRenderer:
   m_ObjectHideFlags: 1

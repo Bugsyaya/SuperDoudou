@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PalyerScript : MonoBehaviour {
+public class PalyerScript : Personn {
 
 	/// <summary>
     /// 1 - The speed of the ship
@@ -21,10 +21,27 @@ public class PalyerScript : MonoBehaviour {
 
         // 4 - Movement per direction
         movement = new Vector2(
-          speed.x * inputX,
+          speed.x * 0,
           speed.y * inputY);
 
+        // 5 - Shooting
+        bool shoot = Input.GetButtonDown("Fire1");
+        shoot |= Input.GetButtonDown("Fire2");
+        // Careful: For Mac users, ctrl + arrow is a bad idea
+
+        if (shoot)
+        {
+            WeaponScript weapon = GetComponent<WeaponScript>();
+            if (weapon != null)
+            {
+                // false because the player is not an enemy
+                weapon.Attack(false);
+            }
+        }
+
     }
+
+
 
     void FixedUpdate()
     {
