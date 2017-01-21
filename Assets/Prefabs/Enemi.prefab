@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 61498308387526330}
   - component: {fileID: 50089458007893920}
   - component: {fileID: 114493645021749136}
+  - component: {fileID: 114724044685513486}
   m_Layer: 0
   m_Name: Enemi
   m_TagString: Untagged
@@ -62,7 +63,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!61 &61498308387526330
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -90,6 +91,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: {x: 10, y: 10}
   direction: {x: -1, y: 0}
+--- !u!114 &114724044685513486
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1687753056946982}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fdfd47ac305cb6e44b78098efea1dc05, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hp: 1
+  isEnemy: 1
 --- !u!212 &212754478529274102
 SpriteRenderer:
   m_ObjectHideFlags: 1
