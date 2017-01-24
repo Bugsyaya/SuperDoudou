@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 
 /// <summary>
-/// Launch projectile
+/// Crée des projectiles
 /// </summary>
 public class WeaponScript : MonoBehaviour
 {
@@ -10,17 +10,17 @@ public class WeaponScript : MonoBehaviour
   //--------------------------------
 
   /// <summary>
-  /// Projectile prefab for shooting
+  /// Prefab du projectile
   /// </summary>
   public Transform shotPrefab;
 
   /// <summary>
-  /// Cooldown in seconds between two shots
+  /// Temps de rechargement entre deux tirs
   /// </summary>
   public float shootingRate = 0.25f;
 
   //--------------------------------
-  // 2 - Cooldown
+  // 2 - Rechargement
   //--------------------------------
 
   private float shootCooldown;
@@ -39,11 +39,11 @@ public class WeaponScript : MonoBehaviour
   }
 
   //--------------------------------
-  // 3 - Shooting from another script
+  // 3 - Tirer depuis un autre script
   //--------------------------------
 
   /// <summary>
-  /// Create a new projectile if possible
+  /// Création d'un projectile si possible
   /// </summary>
   public void Attack(bool isEnemy)
   {
@@ -51,30 +51,30 @@ public class WeaponScript : MonoBehaviour
     {
       shootCooldown = shootingRate;
 
-      // Create a new shot
+      // Création d'un objet copie du prefab
       var shotTransform = Instantiate(shotPrefab) as Transform;
 
-      // Assign position
+      // Position
       shotTransform.position = transform.position;
 
-      // The is enemy property
+      // Propriétés du script
       ShotScript shot = shotTransform.gameObject.GetComponent<ShotScript>();
       if (shot != null)
       {
         shot.isEnemyShot = isEnemy;
       }
 
-      // Make the weapon shot always towards it
+      // On saisit la direction pour le mouvement
       MoveScript move = shotTransform.gameObject.GetComponent<MoveScript>();
       if (move != null)
       {
-        move.direction = this.transform.right; // towards in 2D space is the right of the sprite
+        move.direction = -this.transform.right; // ici la droite sera le devant de notre objet
       }
     }
   }
 
   /// <summary>
-  /// Is the weapon ready to create a new projectile?
+  /// L'arme est chargée ?
   /// </summary>
   public bool CanAttack
   {

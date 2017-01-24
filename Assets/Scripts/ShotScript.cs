@@ -12,10 +12,19 @@ public class ShotScript : MonoBehaviour {
   /// Projectile damage player or enemies?
   /// </summary>
   public bool isEnemyShot = false;
+  public float speed = 10;
+  private Rigidbody2D rigidBody2D;
+
+  private Vector2 movement;
 
   void Start()
   {
-    // 2 - Limited time to live to avoid any leak
-    Destroy(gameObject, 20); // 20sec
+    movement = new Vector2(speed * (isEnemyShot ? -1 : 1), 0);
+    rigidBody2D = GetComponent<Rigidbody2D>();
+    Destroy(gameObject, 1.5f); 
+  }
+
+  void FixedUpdate() {
+    rigidBody2D.velocity = movement;
   }
 }

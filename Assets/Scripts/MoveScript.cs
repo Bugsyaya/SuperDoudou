@@ -9,6 +9,12 @@ public class MoveScript : MonoBehaviour {
 
     private Vector2 movement;
     private Rigidbody2D rigidbodyComponent;
+    private Animator anim;
+
+    void Start() {
+        rigidbodyComponent = GetComponent<Rigidbody2D>();
+        anim = GetComponent<Animator>();
+    }
 
     void Update()
     {
@@ -24,6 +30,8 @@ public class MoveScript : MonoBehaviour {
 				Camera.main.transform.position.z
 			);
 		}
+
+        anim.SetBool("grounded", Model.Instance.grounded);
     }
 
     void FixedUpdate()
@@ -31,7 +39,7 @@ public class MoveScript : MonoBehaviour {
         if (rigidbodyComponent == null) rigidbodyComponent = GetComponent<Rigidbody2D>();
 
         // Apply movement to the rigidbody
-		rigidbodyComponent.AddForce(movement);
+        if(Model.Instance.scrolling) rigidbodyComponent.AddForce(movement);
         
 
         if(rigidbodyComponent.velocity.magnitude > Model.Instance.maxSpeed) {

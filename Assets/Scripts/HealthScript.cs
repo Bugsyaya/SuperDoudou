@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 
 /// <summary>
 /// Handle hitpoints and damages
@@ -25,6 +26,8 @@ public class HealthScript : MonoBehaviour
 
     if (hp <= 0)
     {
+      if(!isEnemy) SceneManager.LoadScene("GameOver");
+      else Model.Instance.scrolling = true;
       // Dead!
       Destroy(gameObject);
     }
@@ -44,6 +47,7 @@ public class HealthScript : MonoBehaviour
         // Destroy the shot
         Destroy(shot.gameObject); // Remember to always target the game object, otherwise you will just remove the script
       }
+      
     }
   }
 }

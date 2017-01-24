@@ -6,6 +6,8 @@ TagManager:
   tags:
   - JumpPower
   - Floor
+  - Shield
+  - BadDoudou
   layers:
   - Default
   - TransparentFX
